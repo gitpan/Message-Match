@@ -5,9 +5,7 @@ use strict;use warnings;
 use lib '../lib';
 use Test::More;
 
-use_ok('Message::Match');
-*mmatch = *Message::Match::mmatch;
-*mmatch = *Message::Match::mmatch;
+use_ok('Message::Match', 'mmatch');
 
 #not nested
 ok mmatch({a => 'b'},{a => 'b'}), 'simplest possible';

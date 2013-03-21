@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "IPC-Transit",
+   "name" : "Message-Match",
    "prereqs" : {
       "build" : {
          "requires" : {
@@ -32,7 +32,7 @@
    "provides" : {
       "Message::Match" : {
          "file" : "lib/Message/Match.pm",
-         "version" : "0.1"
+         "version" : "0.2"
       }
    },
    "release_status" : "unstable",
@@ -41,5 +41,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.1"
+   "version" : "0.2"
 }

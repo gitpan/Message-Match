@@ -1,10 +1,12 @@
 package Message::Match;
 
 use strict;use warnings;
+require Exporter;
+use vars qw($VERSION @ISA @EXPORT_OK);
+@ISA = qw(Exporter);
+@EXPORT_OK = qw(mmatch);
 
-use vars qw($VERSION);
-
-$VERSION = '0.1';
+$VERSION = '0.2';
 
 sub mmatch {
     my ($message, $match) = @_;
@@ -22,9 +24,10 @@ sub mmatch {
 sub _special {
     my ($message, $match) = @_;
     substr($match, 0, 8, '');
-    if($match =~ /^\//) { #regex type
+    if($match =~ m{^/}) { #regex type
         my $re;
-        eval "\$re = qr$match;";
+        eval "\$re = qr$match;";    #this is hideously inefficient
+                                    #but it is highly cacheable, later on
         if($message =~ $re) {
             return 1
         } else {

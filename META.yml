@@ -12,12 +12,12 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: IPC-Transit
+name: Message-Match
 provides:
   Message::Match:
     file: lib/Message/Match.pm
-    version: 0.1
+    version: 0.2
 requires:
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.1
+version: 0.2
