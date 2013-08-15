@@ -1,12 +1,13 @@
 package Message::Match;
+{
+  $Message::Match::VERSION = '1.132270';
+}
 
 use strict;use warnings;
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT_OK);
+use vars qw(@ISA @EXPORT_OK);
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(mmatch);
-
-$VERSION = '0.4';
 
 sub mmatch {
     my ($message, $match) = @_;

@@ -1,36 +1,71 @@
-use 5.006;
+
 use strict;
-use warnings FATAL => 'all';
-use inc::Module::Install;
+use warnings;
 
-name     'Message-Match';
-all_from 'lib/Message/Match.pm';
-author   q{Dana M. Diederich <diederich@gmail.com>};
-license  'artistic2';
 
-perl_version 5.006;
 
-tests_recursive('t');
+use ExtUtils::MakeMaker 6.30;
 
-resources (
-   homepage   => 'https://metacpan.org/module/Message::Match',
-   #IRC        => 'irc://irc.perl.org/#Message-Match',
-   license    => 'http://www.perlfoundation.org/artistic_license_2_0',
-   repository => 'git://github.com/dana/perl-Message-Match.git',
-   bugtracker => 'https://github.com/dana/perl-Message-Match/issues',
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "Fast, simple message matching",
+  "AUTHOR" => "Dana M. Diederich <dana\@realms.org>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "Message-Match",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Message::Match",
+  "PREREQ_PM" => {
+    "Exporter" => 0,
+    "strict" => 0,
+    "vars" => 0,
+    "warnings" => 0
+  },
+  "TEST_REQUIRES" => {
+    "Test::More" => 0,
+    "lib" => 0
+  },
+  "VERSION" => "1.132270",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
 
-configure_requires (
-   'Module::Install' => 0,
-);
 
-build_requires (
-   'Test::More' => 0,
-);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
-requires (
-);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
-install_as_cpan;
-auto_install;
-WriteAll;
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+

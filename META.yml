@@ -1,31 +1,27 @@
 ---
 abstract: 'Fast, simple message matching'
 author:
-  - ', 2013 Dana M. Diederich. All Rights Reserved.'
-  - 'Dana M. Diederich <diederich@gmail.com>'
+  - 'Dana M. Diederich <dana@realms.org>'
 build_requires:
-  ExtUtils::MakeMaker: 6.59
   Test::More: 0
+  lib: 0
+  perl: 5.006
 configure_requires:
-  ExtUtils::MakeMaker: 6.59
-  Module::Install: 0
-distribution_type: module
-dynamic_config: 1
-generated_by: 'Module::Install version 1.06'
-license: artistic2
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140'
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Message-Match
-no_index:
-  directory:
-    - inc
-    - t
 requires:
-  perl: 5.6.0
+  Exporter: 0
+  strict: 0
+  vars: 0
+  warnings: 0
 resources:
   bugtracker: https://github.com/dana/perl-Message-Match/issues
-  homepage: https://metacpan.org/module/Message::Match
-  license: http://www.perlfoundation.org/artistic_license_2_0
-  repository: git://github.com/dana/perl-Message-Match.git
-version: 0.4
+  homepage: https://github.com/dana/perl-Message-Match
+  repository: https://github.com/dana/perl-Message-Match.git
+version: 1.132270
